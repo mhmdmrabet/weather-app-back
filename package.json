@@ -34,6 +34,7 @@
     "@adonisjs/core": "^5.5.3",
     "@adonisjs/lucid": "^17.0.1",
     "@adonisjs/repl": "^3.1.9",
+    "axios": "^0.26.0",
     "luxon": "^2.3.1",
     "pg": "^8.7.3",
     "phc-argon2": "^1.1.3",

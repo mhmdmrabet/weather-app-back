@@ -22,4 +22,5 @@ export default Env.rules({
   DRIVE_DISK: Env.schema.enum(["local"] as const),
   NODE_ENV: Env.schema.enum(["development", "production", "testing"] as const),
   API_VERSION: Env.schema.number(),
+  OPEN_WEATHER_API_KEY: Env.schema.string(),
 });
