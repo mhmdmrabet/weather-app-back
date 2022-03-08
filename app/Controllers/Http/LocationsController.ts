@@ -8,6 +8,11 @@ import { Location as LocationType } from "App/types/location.type";
 export default class LocationsController {
   public locationService = LocationService;
 
+  public async index() {
+    const locations = await Location.query().orderBy("updated_at", "desc");
+    return locations;
+  }
+
   public async storeLocation({ params }: HttpContextContract) {
     try {
       const locationData: LocationType[] = await this.locationService.findLocation(params.city);
