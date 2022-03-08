@@ -3,6 +3,7 @@ import Env from "@ioc:Adonis/Core/Env";
 import authRoutes from "./auth";
 import homeRoutes from "./home";
 import locationRoutes from "./location";
+import weatherRoutes from "./weather";
 
 Route.on("/").redirectToPath(`/api/v${Env.get("API_VERSION")}`);
 
@@ -12,6 +13,7 @@ Route.group(() => {
   Route.group(() => {
     authRoutes();
     locationRoutes();
+    weatherRoutes();
   })
     .prefix("/v1")
     .as("v1");

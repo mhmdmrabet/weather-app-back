@@ -12,7 +12,7 @@ export default class Location extends BaseModel {
   public name: string;
 
   @column()
-  public state: string;
+  public state?: string | null;
 
   @column()
   public cityName?: string;

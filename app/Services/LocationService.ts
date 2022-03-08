@@ -20,10 +20,15 @@ class LocationService {
     try {
       const locationData: LocationType[] = await this.findLocation(city);
       if (locationData.length > 0) {
-        const { name, lat, lon, country, state } = locationData[0];
-        const searchPayload = { name };
-        const savePayload = { name, lat, lon, state, country };
-        const storedLocation = await Location.firstOrCreate(searchPayload, savePayload);
+        const firstLocation = locationData[0];
+        const location = {
+          name: firstLocation.name,
+          lat: firstLocation.lat,
+          lon: firstLocation.lon,
+          country: firstLocation.country,
+          state: firstLocation.state,
+        };
+        const storedLocation = await Location.firstOrCreate({ name: location.name }, location);
         return storedLocation;
       } else {
         throw new Error("Location not found");

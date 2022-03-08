@@ -4,5 +4,5 @@ export interface Location {
   lat: string;
   lon: string;
   country: string;
-  state: string;
+  state: string | null;
 }

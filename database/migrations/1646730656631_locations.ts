@@ -8,7 +8,7 @@ export default class Locations extends BaseSchema {
       table.increments("id");
       table.string("country").notNullable();
       table.string("name").notNullable();
-      table.string("state").notNullable();
+      table.string("state").nullable();
       table.string("city_name").nullable();
       table.string("lat").notNullable();
       table.string("lon").notNullable();
