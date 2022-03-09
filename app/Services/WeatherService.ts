@@ -2,7 +2,7 @@ import Env from "@ioc:Adonis/Core/Env";
 import axios from "axios";
 
 class WeatherService {
-  public async getWeather(name: string) {
+  public async getWeatherByName(name: string) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units&lang=fr=metric&appid=${Env.get(
       "OPEN_WEATHER_API_KEY"
     )}`;
