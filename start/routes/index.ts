@@ -4,6 +4,7 @@ import authRoutes from "./auth";
 import homeRoutes from "./home";
 import locationRoutes from "./location";
 import weatherRoutes from "./weather";
+import userRoutes from "./user";
 
 Route.on("/").redirectToPath(`/api/v${Env.get("API_VERSION")}`);
 
@@ -12,6 +13,7 @@ homeRoutes();
 Route.group(() => {
   Route.group(() => {
     authRoutes();
+    userRoutes();
     locationRoutes();
     weatherRoutes();
   })
