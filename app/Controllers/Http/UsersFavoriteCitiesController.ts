@@ -30,9 +30,9 @@ export default class UsersFavoriteCitiesController {
   public async dettach({ auth, response, request }: HttpContextContract) {
     try {
       const user = await auth.user!;
-      const { cityName } = await request.params();
+      const { cityId } = await request.params();
 
-      const city = await Location.findByOrFail("name", cityName);
+      const city = await Location.findOrFail(cityId);
 
       await user.related("locations").detach([city.id]);
 

@@ -6,9 +6,9 @@ export default function usersFavoriteCitiesRoutes() {
     Route.post("/:cityName", "UsersFavoriteCitiesController.attach").as(
       "usersFavoriteCities.attach"
     );
-    Route.delete("/:cityName", "UsersFavoriteCitiesController.dettach").as(
-      "usersFavoriteCities.dettach"
-    );
+    Route.delete("/:cityId", "UsersFavoriteCitiesController.dettach")
+      .where("cityId", Route.matchers.number())
+      .as("usersFavoriteCities.dettach");
   })
     .prefix("/users/cities")
     .middleware("auth");
