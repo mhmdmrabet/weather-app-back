@@ -17,7 +17,7 @@ export default class UsersFavoriteCitiesController {
       const user = await auth.user!;
       const { cityName } = await request.params();
 
-      const city = await Location.findByOrFail("cityName", cityName);
+      const city = await Location.findByOrFail("name", cityName);
 
       await user.related("locations").attach([city.id]);
 
@@ -32,7 +32,7 @@ export default class UsersFavoriteCitiesController {
       const user = await auth.user!;
       const { cityName } = await request.params();
 
-      const city = await Location.findByOrFail("cityName", cityName);
+      const city = await Location.findByOrFail("name", cityName);
 
       await user.related("locations").detach([city.id]);
 
