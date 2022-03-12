@@ -23,7 +23,22 @@ export default class UsersFavoriteCitiesController {
 
       return response.created();
     } catch (error) {
-      return response.badRequest();
+      return response.badRequest({ error });
+    }
+  }
+
+  public async dettach({ auth, response, request }: HttpContextContract) {
+    try {
+      const user = await auth.user!;
+      const { cityId } = await request.params();
+
+      const city = await Location.findOrFail(cityId);
+
+      await user.related("locations").detach([city.id]);
+
+      return response.noContent();
+    } catch (error) {
+      return response.badRequest({ error });
     }
   }
 }
