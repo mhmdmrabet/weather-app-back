@@ -15,14 +15,18 @@ export default class UsersFavoriteCitiesController {
   public async attach({ auth, response, request }: HttpContextContract) {
     try {
       const user = await auth.user!;
-      const { cityName } = await request.params();
+      const { cityId } = await request.params();
 
-      const city = await Location.findByOrFail("name", cityName);
+      const city = await Location.findOrFail(cityId);
 
       await user.related("locations").attach([city.id]);
 
       return response.created();
     } catch (error) {
+      console.log(
+        "🚀 ~ file: UsersFavoriteCitiesController.ts ~ line 26 ~ UsersFavoriteCitiesController ~ attach ~ error",
+        error
+      );
       return response.badRequest({ error });
     }
   }
