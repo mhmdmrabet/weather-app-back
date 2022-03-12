@@ -15,9 +15,9 @@ export default class UsersFavoriteCitiesController {
   public async attach({ auth, response, request }: HttpContextContract) {
     try {
       const user = await auth.user!;
-      const { cityId } = await request.params();
+      const { cityName } = await request.params();
 
-      const city = await Location.findOrFail(cityId);
+      const city = await Location.findByOrFail("cityName", cityName);
 
       await user.related("locations").attach([city.id]);
 
@@ -30,9 +30,9 @@ export default class UsersFavoriteCitiesController {
   public async dettach({ auth, response, request }: HttpContextContract) {
     try {
       const user = await auth.user!;
-      const { cityId } = await request.params();
+      const { cityName } = await request.params();
 
-      const city = await Location.findOrFail(cityId);
+      const city = await Location.findByOrFail("cityName", cityName);
 
       await user.related("locations").detach([city.id]);
 
