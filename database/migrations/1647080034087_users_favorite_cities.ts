@@ -1,7 +1,7 @@
 import BaseSchema from "@ioc:Adonis/Lucid/Schema";
 
-export default class LocationUsers extends BaseSchema {
-  protected tableName = "location_user";
+export default class UsersFavoriteCities extends BaseSchema {
+  protected tableName = "users_favorite_cities";
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {

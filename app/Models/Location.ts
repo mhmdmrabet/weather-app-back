@@ -37,6 +37,6 @@ export default class Location extends BaseModel {
   public updatedAt: DateTime;
 
   // * RelationShip
-  @manyToMany(() => User, { pivotTable: "user_locations", pivotTimestamps: true })
+  @manyToMany(() => User, { pivotTable: "users_favorite_cities", pivotTimestamps: true })
   public locations: ManyToMany<typeof User>;
 }

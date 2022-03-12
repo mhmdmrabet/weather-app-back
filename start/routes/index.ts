@@ -5,6 +5,7 @@ import homeRoutes from "./home";
 import locationRoutes from "./location";
 import weatherRoutes from "./weather";
 import userRoutes from "./user";
+import usersFavoriteCitiesRoutes from "./usersFavoriteCities";
 
 Route.on("/").redirectToPath(`/api/v${Env.get("API_VERSION")}`);
 
@@ -16,6 +17,7 @@ Route.group(() => {
     userRoutes();
     locationRoutes();
     weatherRoutes();
+    usersFavoriteCitiesRoutes();
   })
     .prefix("/v1")
     .as("v1");
